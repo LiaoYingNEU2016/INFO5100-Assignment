@@ -1,0 +1,375 @@
+1.Hiking
+
+Things:
+
+　　　Organizer
+　　　      Data: name, license, 
+　　　      Behaviors: rent, drive, pick, fillGas, eat, buyTicket, bookHotel 
+
+　　　Mountain
+　　　      Data: name, distance 
+　　　      Behaviors: 
+
+　　　Car
+　　　　　　Data: company, brand, number, color, size, gasAmount, rentTime
+　　　      Behaviors: run, useGas, 
+　　　
+　　　Lunch
+　　　      Data: restuarantName, distance 
+　　　      Behaviors:
+　　　
+　　　Website
+　　　      Data: name
+　　　      Behaviors:searchTicket, bookTicket, check 
+　　　
+　　　Tickets 
+　　　　　　Data: price, amount, park, availableTime
+　　　      Behaviors: enterPark
+　　　
+　　　Hotel
+　　　　　　Data: name, location, roomType, roomPrice  
+　　　      Behaviors: checkIn, checkOut,register
+　　　
+
+
+
+Mountain rainier;
+Organizer amy;
+Car reachNow;
+Lunch restaurant;
+Website ticketBooking
+Ticket parkTicket;
+Hotel hotel;
+
+
+amy.rentCar
+LOOP
+amy.chooseCar
+If car==reachNow
+　break
+END
+ 
+If reachNow.runOutOfGas
+　amy.fillGas
+
+If driveDistance==restuarantLocation
+　amy.eatLunch
+
+LOOP
+amy.bookTicket
+ticketBooking.check
+If check is true
+  amy.purchaseTicket
+　parkTicket.enterPark
+  If enterpark is true
+     break
+  else amy.cancelTicket
+END
+
+LOOP
+amy.bookHotel
+hotel.checkBooking
+If booking is available
+　hotel.register
+  break
+END
+
+amy.checkIn
+LOOP
+hotel.confirmBooking
+If confirm is true
+  hotel.giveKey
+  break
+else 
+  hotel.checkProblem
+  hotel.solve
+END
+
+
+
+
+
+2. Organise a Career fair
+
+Things:
+
+Organization 
+　　　Data: name 
+      Behaviors: Organize, invite,arrangeTime, arrangeRoom, solve
+
+Students
+　　　Data: name, amount, resume, experience 
+      Behaviors: attend, sendResume, Interview, speak, chooseOffer
+
+Company
+　　　Data: name, amount, positionOffered,  
+      Behaviors: attend, checkResume, interview, pick,
+
+
+
+
+Organization neu;
+Company tech;
+Student student;
+
+neu.organise
+If organise is true
+　　neu.inviteCompany
+　　If companyAmount >0
+　　　　LOOP
+　　　　neu.arrangeTime
+　　　　tech. checkTime
+　　　　student.getTime
+　　　　If time is ok
+　　　　  break
+　　　　else
+　　　　　student.mailNeu
+　　　　END
+　　　　
+　　　　neu.arrangeRoom
+　　　　tech.getRoom
+　　　　student.getRoom
+　　　　
+　　　　LOOP
+　　　　numberOfCompanySentResumeTo = 0
+　　　　If numberOfCompanySentResumeTo > companyAmount
+            break
+        else
+　　　　　　student.sendResumeToCompany
+　　　　　　numberOfCompanySentResumeTo ++
+　　　　　　If company.acceptResume
+　　　　　　student.interview
+　　　　　　company.chooseStudents
+　　　　　　If choose is true
+　　　　　　    student.pickAdmittedCompany
+　　　　　　    If pick is true
+　　　　　　       student.getJob
+　　　　　　       break
+　　　　　　    end
+　　     END
+　　
+　　　else
+　　　　　neu.deleteOrganization
+else 
+　　end
+
+
+
+
+
+
+3.Order Pizza from Pizza Hut
+
+Things:
+
+Customer
+　　　Data: name, address, phone 
+      Behaviors: search, order, purchase, check
+Internet
+　　　Data: status, website
+　　　Behaviors: connect
+Website
+　　　Data: name 
+      Behaviors: search, check, send
+Pizza
+　　　Data: name, amount 
+      Behaviors: 
+
+
+Customer amy;
+Internet internet;
+Website pizzahut;
+Pizza pizza;
+
+
+If internet.isAvaliable
+
+  LOOP
+　amy.searchPizzaHut
+　If amy.findPizzaHut
+     website=pizzahut
+     break
+　END  
+
+  pizzahut.searchPizza
+ 
+　LOOP
+　pizzahut.choosePizza
+　If pizzaAmount > 0
+    pizzahut.orderPizza
+    break
+　END
+　
+　amy.purchaseOrder
+　pizzahut.checkOrder
+　If order is correct
+　　　pizzahut.arrangeDelivery
+　　　amy.receivePizza
+　　　amy.checkPizza
+　　　If pizza is not true
+　　　  amy.cancelOrder
+　　　else
+　　　  end
+  else
+      pizzahut.deleteOrder
+      end
+else
+  end
+
+
+
+
+4.Design a code sharing platform
+
+Things:
+
+Administrator
+　　　Data: name, amount, permission  
+      Behaviors: manage, check, solve, close, refuse
+
+Platform
+　　　Data: name, function, code 
+      Behaviors: checkAccount, showCode, search
+
+User
+　　　Data: account 
+      Behaviors: login, search, upload, download, delete
+
+Code
+　　　Data: belonger, size, uploadDate 
+      Behaviors:
+
+
+
+Administrator admin;
+Platform github;
+User user;
+Code code;
+
+
+user.connectGithub
+If connect is true
+
+  LOOP
+  user.login
+    If login is true
+      break
+  END
+  
+  If user.wantToSearchCode
+    LOOP
+　　user.typeKeyword
+　　github.searchKeyword
+　　If user.getCorrectCode
+　　  user.requestToDownload
+　　  break
+　　END
+　　Admin.checkCode
+　　if check is true
+　　  user.download
+　　else
+　　  end
+　　 
+  If user.wantToShareCode
+    LOOP
+　　user.uploadCode
+　　admin.checkCode
+　　If check is true
+　　　break
+　　END
+　　github.showCode
+　　
+  If user.wantToModifyCode
+　　user.applyModify
+　　github.checkAccount
+　　If check is true
+　　　LOOP
+　　　user.modifyCode
+　　　If modify!=null
+　　　　break
+　　　END
+　　else
+　　  end
+　　admin.checkCode
+　　If check is true
+　　　github.showCode
+　　else
+　　  end
+
+else
+  end
+　　
+  If user.wantToDeleteCode
+　　User.applyDelete
+　　Github.checkAccount
+　　If check is true
+　　　Github.deleteCode
+　　　Github.flashWebsite 
+　　else
+　　  end
+
+　　
+　　
+
+
+5. Design a soft-drink/snacks vending machine.
+
+Things:
+
+Machine
+　　　Data: position, type 
+      Behaviors: checkCash, returnCash, sendProduct, calculateCash
+
+Product
+　　　Data: type, amount, prize 
+      Behaviors:
+
+Buyer
+　　　Data: name, cashAmount,  
+      Behaviors: putCash, select 
+
+Administrator
+　　　Data: name, workLocation 
+      Behaviors: addProduct
+
+
+Machine machine;
+Product snack;
+Buyer student;
+Administrator admin;
+
+
+If machine.isAvaliable
+　　If snackAmount>0
+　　    LOOP
+　　　　buyer.putCash
+　　　　machine.checkCash
+　　　　If check is true
+　　　　  break
+　　　　else
+　　　　  machine.returnCash
+　　　　END
+　　　　
+　　　　LOOP
+　　　　machine.showAvaliableSnack
+　　　　If buyer.notSeeWannaSnack
+　　　　　　buyer.enterExitButton
+            machine.calculateCurrentCash
+            break
+        else
+　　　　　　buyer.selectSnack
+　　　　　　machine.sendOutSnack
+　　　　　　machine.calculateCurrentCash
+　　　　　　If buyer.endPurchase
+　　　　　　　　break
+　　　　END
+　　　　
+　　　　machine.sendOutCurrentCash
+        end
+ 
+　　else
+　　    machine.callAdmin
+　　    admin.addSnack
+　　    end
+else
+  end
