@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /*Question 1
  * 
+ * The main problem is that this class has two constructor with the same type 'int' of parameter. This is not allowed. System can not know which constructor is called. 
+ *
  * 'super();' should be deleted from the second method 
  * Because 'super()' means to inherit from it's superclass, but this class does not have a superclass 
  * 
