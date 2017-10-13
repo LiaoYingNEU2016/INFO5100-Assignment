@@ -84,13 +84,6 @@ public class Hangman {
 	}
 	
 	public boolean gameWon(){  // return true if user wins the game.
-	/*	if(correctList.size()==chooseWord().toCharArray().length){
-			System.out.println("You win the Game!");
-		    return true;
-		}
-		else
-			return false;
-    */
 		ArrayList<Character> checkLetter = new ArrayList<Character>();
 		
 		for(int i=0; i<correctList.size(); i++){
@@ -244,18 +237,14 @@ public class Hangman {
 				if(gameLetter[i]==letter){
 					display[i] = String.valueOf(gameLetter[i]);}
 			}
-		//    printWord = String.valueOf(display);
 			 StringBuffer sb = new StringBuffer();
 			 for(int i = 0; i < display.length; i++)
 			 { 
 			    sb. append(display[i]);
 			 }
 			 printWord = sb.toString();
-		//	  printWord = Arrays.toString(display);
  		}
 		else{
-		//	printWord = String.valueOf(display);
-		//	printWord = Arrays.toString(display);
 			 StringBuffer sb = new StringBuffer();
 			 for(int i = 0; i < display.length; i++)
 			 { 
