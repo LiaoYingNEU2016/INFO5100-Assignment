@@ -26,6 +26,7 @@ public class Book{
 	 public Book(int price){
 	 this.price = price;
 	 }
+	 // Missing return type here
 	 public setName(String name){
 	 return name;
 	 }
@@ -86,11 +87,13 @@ class NoVowels{
 		int j=0;
 		
 		for (int i=0; i<letter.length; i++){
+			// Consider the test case of UpperCase vowels
 			if(letter[i]!='a'&&letter[i]!='e'&&letter[i]!='i'&&letter[i]!='o'&&letter[i]!='u'){		
 				noVowels[j]=letter[i];
 				j++;
 			}
 		}
+		// Wrong result, result will have the same length with input
 		String result = String.valueOf(noVowels) ;
 		return result;
 	}
@@ -109,6 +112,7 @@ class Anagrams{
 		
 		if(first.length!=second.length)
 			return false;
+		// Always using blocks{}, to prevent confusing and coding error
 		else
 		    Arrays.sort(first);
 		    Arrays.sort(second);
